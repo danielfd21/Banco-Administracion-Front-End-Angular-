@@ -1,0 +1,54 @@
+<h1>Ventana de Empleados</h1>
+
+<br><br>
+
+<form [formGroup]="FormularioVentana" >
+
+
+    <label for="">Cedula:</label> &nbsp; &nbsp; &nbsp; <input type="text" name="txt_ced" id="tx_ce" formControlName="cedula">  &nbsp; &nbsp; &nbsp;<label for="">o</label> &nbsp; &nbsp; &nbsp;<label for="">Apellidos:</label> &nbsp; &nbsp;<input type="text" name="txt_ape" id="tx_ap" formControlName="apellidos"> 
+
+    <br><br>
+
+    <input type="button" value="Buscar" name="btn_bus" id="bt_bu" (click)="Buscar()" >&nbsp;&nbsp;&nbsp; <input type="button" value="Mostrar Todo" name="btn_mos" id="bt_mo" (click)="Mostrar()" >
+    
+    <br><br>
+    <label for="" *ngIf="mensaje">{{mensaje}}</label>
+    <br><br>
+    <table border="3">
+        <thead>
+            <tr>
+                <td>Cedula</td>
+                <td>Nombres</td>
+                <td>Apellidos</td>
+                <td>Correo</td>
+                <td>Edad</td>
+                <td>Departamento</td>
+                <td>Jefe De Departamento</td>
+                <td>Actualizar</td>
+                <td>Eliminar</td>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let imprimir of empleados" [class.selected]="imprimir === filaSeleccionada">
+
+                <td>{{imprimir.cedula}}</td>
+                <td>{{imprimir.nombre}}</td>
+                <td>{{imprimir.apellidos}}</td>
+                <td>{{imprimir.correo}}</td>
+                <td>{{imprimir.fechaDeNacimiento}}</td>
+                <td>{{imprimir.idDepartamento.nombre}}</td>
+                <td>{{imprimir.idDepartamento.cedula.nombres}}</td>
+                <td><input type="button" value="Actualizar"  name="btn_act" id="bt_ac" (click)="Enviar(imprimir.cedula)"></td>
+                <td><input type="button" name="btn_eli" id="bt_el" value="Eliminar" (click)="Eliminar(imprimir.cedula)"></td>
+            </tr>
+        </tbody>
+        
+        
+    </table>
+
+    <br>
+    <br>
+
+     
+
+</form>

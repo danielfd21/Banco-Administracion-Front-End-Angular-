@@ -1,0 +1,18 @@
+<form [formGroup]="FormularioClaveEmpleado" (ngSubmit)="Actualizar()">
+
+    <h1>Nueva Clave</h1> 
+    <br><br>
+
+    <label for="">Cedula:</label> <input type="text" name="txt_ced" id="tx_ce" formControlName="cedula"> <br><br>
+
+
+    <label for="">Nueva Clave:</label><br><br>
+
+    <textarea  name="txt_cla"  id="tx_cl" cols="50" rows="4" formControlName="clave"  ></textarea> <br><br>
+
+    <label for="" *ngIf="mensaje">{{mensaje}}</label> <br><br>
+
+    <input type="submit" name="btn_actualizar_clave" id="tx_act_cla" value="Generar">
+
+
+</form>

@@ -1,0 +1,47 @@
+<h1><label for="">Registrar Empleado</label></h1>
+<br>
+<br>
+
+<form [formGroup]="FormularioNuevoEmpleado" (ngSubmit)="submit()">
+
+<label for="">Cedula:</label> 
+<input type="text" name="txt_ced" id="tx_ce" formControlName="cedula"> <br><br>
+
+<label for="">Nombres:</label>
+<input type="text" name="txt_nom" id="tx_no" formControlName="nombres"> <br><br>
+
+<label for="">Apellidos:</label>
+<input type="text" name="txt_ape" id="tx_ap" formControlName="apellidos"> <br><br>
+
+<label for="">Correo:</label>
+<input type="text" name="txt_cor" id="tx_co" formControlName="correo"> <br><br>
+
+<label for="">Fecha de naciemiento</label> 
+<input type="date" name="txt_fec" id="tx_fe" formControlName="fechaDeNacimiento"> <br><br>
+
+<label for="">Departamento:</label>
+
+
+<select name="cb_dep" id="cb_de" formControlName="departamento">
+
+
+    <option *ngFor="let dep of departamentos" [value]="dep">{{dep}}</option>
+
+
+
+</select>
+
+<br>
+<br>
+<br>
+
+<label for="" *ngIf="mensaje">{{mensaje}}</label>
+
+<br>
+<br>
+<br>
+
+<input type="submit" value="Registrar Empleado">
+
+</form>
+

@@ -1,0 +1,36 @@
+
+    <form [formGroup]="formulariologin" (ngSubmit)="enviar()">
+    
+        <h1><label for="">Bienvenido a Banco Multitodo Administración</label></h1>
+
+        <label for="">Usuario:</label> &nbsp; &nbsp; 
+        <input type="text" name="txt_usu" id="tx_us" formControlName="cedula"> 
+        <br>
+        <br>
+        <label for="" *ngIf="hasErrors('cedula')" > El campo de cedula no debe ser vacio</label>
+        <br>
+        <br>
+
+        <label for="">Clave</label> &nbsp; &nbsp; &nbsp; &nbsp;  
+        <input type="password" id="tx_cl" formControlName="clave"> &nbsp; &nbsp; <app-boton-mostrar-clave [id]="'tx_cl'"></app-boton-mostrar-clave>
+        <br>
+        <br>
+        <label for="" *ngIf="hasErrors('clave')">El campo de clave no debe ser vacio</label>
+        <br>
+        <br>
+
+        <label for="" *ngIf="mensaje">{{mensaje}}</label>
+
+        <br>
+        <br>
+        
+    
+        <input type="submit" value="INICIAR CESIÓN">
+    
+    
+    
+    
+    </form>
+
+    
+    

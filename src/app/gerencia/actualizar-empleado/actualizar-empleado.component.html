@@ -1,0 +1,21 @@
+<h1>Actualizar Empleados</h1>
+
+<form [formGroup]="FormularioActualizar" (ngSubmit)="Actualizar()">
+
+    <label for="">Cedula:</label> <input type="text" name="txt_ced" id="tx_ce" formControlName="cedula" [value]=""> <br><br>
+    <label for="">Nombres:</label> <input type="text" name="txt_nom" id="tx_no" formControlName="nombres"> <br><br>
+    <label for="">Apellidos:</label> <input type="text" name="txt_ape" id="tx_ap" formControlName="apellidos"> <br><br>
+    <label for="">Correo:</label> <input type="text" name="txt_cor" id="tx_co" formControlName="correo"> <br><br>
+    <label for="">Fecha de Nacimiento:</label> <input type="date" id="tx_fe" formControlName="fechaDeNacimiento"><br><br>
+    <label for="">departamento:</label> 
+    
+    <select name="" id="" formControlName="idDepartamento">
+        <option  *ngFor="let imprimir of departamentos" [value]="imprimir">{{imprimir}}</option>
+    </select> <br><br>
+
+    <label for="" *ngIf="mensaje">{{mensaje}}</label>
+
+    <br><br>
+    <input type="submit" name="btn_actualizar" id="bt_act" value="Actualizar">
+   
+</form>
