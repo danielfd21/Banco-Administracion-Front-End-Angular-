@@ -4,7 +4,7 @@ App Bancaria para administración mediante Springboot - Angular - MySQL
 
 NOTA: La pagina no contiene estilos, debido a que se espera futuramente añadir una libreria de estilos
 
-[VIDEO DEMOSTRATIVO] duracion 20 minutos: https://youtu.be/nySDukVVpAI
+[VIDEO DEMOSTRATIVO] duracion 20 minutos: [https://youtu.be/nySDukVVpAI](https://www.youtube.com/watch?v=wXdz6jLwySU)
 
 A continuación te detallo el contenido de la aplicación:
 
