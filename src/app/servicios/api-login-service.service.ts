@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CuentaEmpleado } from '../Modelo/CuentaEmpleadoModel';
+import { CuentaEmpleado, DatosCuenta } from '../Modelo/CuentaEmpleadoModel';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
@@ -11,14 +11,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class ApiLoginServiceService {
 
 
-  private url = 'http://localhost:8080/autentificacion';
+  
 
   constructor(private http:HttpClient) { }
 
 
-  PostLoguear(credenciales: CuentaEmpleado):Observable<string>{
+  PostLoguear(usuario:string, clave:string):Observable<any>{
 
-      return this.http.post<string>(this.url, credenciales, {responseType: 'text' as 'json'});
+      const url:string = 'http://localhost:8080/autentificacion/login';
+
+      const params= new HttpParams().set("usu", usuario).set("cla",clave);
+
+      return this.http.post(url, null, {params});
 
   }
 

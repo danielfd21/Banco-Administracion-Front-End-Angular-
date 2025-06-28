@@ -1,6 +1,13 @@
 export interface CuentaEmpleado{
 
-    cedula: String,
-    clave: String,
+    cedula: string,
+    clave: string,
+
+}
+
+export interface DatosCuenta{
+
+    departamento:string,
+    token: string
 
 }

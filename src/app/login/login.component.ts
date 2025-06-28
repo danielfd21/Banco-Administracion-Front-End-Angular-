@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms'
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ApiLoginServiceService } from '../servicios/api-login-service.service';
-import { CuentaEmpleado } from '../Modelo/CuentaEmpleadoModel';
+import { CuentaEmpleado, DatosCuenta } from '../Modelo/CuentaEmpleadoModel';
 import { Route } from '@angular/router';
 import { Router } from '@angular/router';
 
@@ -45,19 +45,28 @@ export class LoginComponent {
 
       const datos = this.formulariologin.value;
 
+      const cedula = this.formulariologin.get("cedula")?.value;
+      const clave = this.formulariologin.get("clave")?.value;
+
     console.log(datos);
 
-    this.apiloginservice.PostLoguear(datos).subscribe({
+    this.apiloginservice.PostLoguear(cedula,clave).subscribe({
 
-      next: (data:string) =>{
-
+      next: (data:DatosCuenta) =>{
+        
         console.log(data);
-        switch(data){
+        
+        const dep = data.departamento.trim();
+        
+        const tok = data.token;
+
+        localStorage.setItem('token',tok);
+
+        switch(dep){
 
           case "Gerencia": this.router.navigate(['gerencia']); break;
-          case "Contabilidad": this.router.navigate(['contabilidad']); break;
-
-          default: this.mensaje = "¡Lo sentimos! Por el momento no existe una pagina para su departemnto"; break;
+          case "Contabilidad": this.mensaje = "Lo sentimos! Por el momento el departamento de Contabilidad esta inhabilitado por reparaciones"; break;
+          default: this.mensaje = data.departamento;
 
         }
 
@@ -65,7 +74,7 @@ export class LoginComponent {
 
       error: (err) =>{
 
-        this.mensaje = typeof err.error === "string"? err.error:"error";
+        this.mensaje = err.error;
         
         
         
